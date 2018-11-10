@@ -6,7 +6,7 @@ This repo contains Firebase push notification Rest API postman collection.
 ## Dashboard
 ![Postman Dashboard](/images/postman-dash.jpg)
 
-##Import Environment Variables from `Firebase.postman_environment.json`
+## Import Environment Variables from `Firebase.postman_environment.json`
 
 ![Environment Variables](/images/environment-variable.jpg)
 
