@@ -1,0 +1,183 @@
+{
+	"info": {
+		"name": "Firebase Notification REST API",
+		"_postman_id": "8e64d804-9355-4e44-67c5-5d85a27f121f",
+		"description": "Firebase collections to send a notification messages during development",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Send Notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "key={{server_key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"priority\":\"HIGH\",\r\n  \"data\":{\r\n   \r\n  },\r\n  \"to\":\"VALID_FCM_TOKENS\"\r\n}"
+				},
+				"url": {
+					"raw": "https://fcm.googleapis.com/fcm/send",
+					"protocol": "https",
+					"host": [
+						"fcm",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"fcm",
+						"send"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "key={{server_key}}"
+					},
+					{
+						"key": "project_id",
+						"value": "{{project_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"operation\": \"add\",\r\n   \"notification_key_name\": \"ANY_GROUP_NAME\",\r\n   \"registration_ids\": [\"VALID_FCM\"]\r\n}"
+				},
+				"url": {
+					"raw": "https://android.googleapis.com/gcm/notification",
+					"protocol": "https",
+					"host": [
+						"android",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"gcm",
+						"notification"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Validate FCM",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key={{server_key}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://iid.googleapis.com/iid/info/{{iid_token}}",
+					"protocol": "https",
+					"host": [
+						"iid",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"iid",
+						"info",
+						"{{iid_token}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create Topic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key={{server_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"to\": \"/topics/YOUR_TOPIC_NAME\",\r\n   \"registration_tokens\": [\"ARRAY_OF_FCM_TOKENS\"]\r\n}"
+				},
+				"url": {
+					"raw": "https://iid.googleapis.com/iid/v1:batchAdd",
+					"protocol": "https",
+					"host": [
+						"iid",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"iid",
+						"v1:batchAdd"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Topic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key={{server_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n   \"to\": \"/topics/TOPIC_NAME\",\r\n   \"registration_tokens\": [\"FCM_TOKENS\"]\r\n }"
+				},
+				"url": {
+					"raw": "https://iid.googleapis.com/iid/v1:batchRemove",
+					"protocol": "https",
+					"host": [
+						"iid",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"iid",
+						"v1:batchRemove"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
